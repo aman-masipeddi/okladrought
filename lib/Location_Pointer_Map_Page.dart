@@ -43,14 +43,14 @@ class _LocationPointerMapPageState extends State<LocationPointerMapPage>{
              Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(width: 2),
+                    //border: Border.all(width: 2),
                   ),
                 )
             ),
             Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(width: 2),
+                    //border: Border.all(width: 2),
                   ),
                   child: Text("${currentPosition.latitude} & ${currentPosition.longitude} & $_currentAddress"),
                 )
