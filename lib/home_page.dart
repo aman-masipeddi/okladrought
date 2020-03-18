@@ -238,24 +238,4 @@ class _HomePageState extends State<HomePage> {
       print(e);
     });
   }
-
-  /*_getAddressFromLatLng() async {
-
-    _currentAddress = " ";
-    try {
-      List<Placemark> p = await geolocator.placemarkFromCoordinates(
-          _currentPosition.latitude, _currentPosition.longitude);
-
-      Placemark place = p[0];
-
-      setState(() {
-        _currentAddress = "${place.locality}";
-      });
-      if(_currentAddress!=null){
-
-      }
-    } catch (e) {
-      print(e);
-    }
-  }*/
 }
