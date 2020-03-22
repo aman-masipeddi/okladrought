@@ -6,8 +6,12 @@ class Station{
 
   static List<Station> getStations() {
     return <Station>[
-      Station('GOOD', 'Goodwall'),
-      Station('STIL','Stillwater'),
+      Station('good', 'Goodwall'),
+      Station('stil','Stillwater'),
+      Station('wood','Woodward'),
+      Station('laho','Lahoma'),
+      Station('elre','El Reno'),
+      Station('chic','Chickasha'),
       Station('SF','San Francisco'),
       Station('CRY','Cary')
     ];

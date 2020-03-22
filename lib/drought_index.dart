@@ -15,6 +15,14 @@ class _DroughtIndexPageState extends State<droughtindexpage>{
         title: Text("Drought Index"),
       ),
       body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text("Yet To Be Developed", textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20),)
+          ],
+        ),
+
       ),
     );
 

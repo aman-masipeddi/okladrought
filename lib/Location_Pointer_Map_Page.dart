@@ -37,26 +37,7 @@ class _LocationPointerMapPageState extends State<LocationPointerMapPage> {
   @override
   void initState() {
     _getAddressFromLatLng();
-
     _dropdownMenuItems = buildDropdownMenuItems(_stations);
-    /*if (_stations.contains((user) => user.STNAME == "Stillwater")) {
-      setState(() {
-        int x = _stations.indexWhere((Station) =>
-        Station.STNAME == "Stillwater");
-        _selectedStation = _dropdownMenuItems[x].value;
-      });
-    }
-    else {
-      setState(() {
-        _selectedStation = _dropdownMenuItems[1].value;
-      });
-    }*/
-   /* setState(() {
-      int x = _stations.indexWhere((Station) =>
-      Station.STNAME == _currentAddress);
-      _selectedStation = _dropdownMenuItems[x].value;
-    });
-*/
     super.initState();
   }
 
