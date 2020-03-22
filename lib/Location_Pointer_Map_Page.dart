@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:location/location.dart';
-import 'package:okladrought_1/Class_STID_STNAME.dart';
+import 'package:okladrought_1/classes_Required.dart';
 import 'static_map_provider.dart';
 import 'SMEI_Chart_Page.dart';
 

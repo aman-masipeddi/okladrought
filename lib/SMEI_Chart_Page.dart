@@ -3,7 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'Class_STID_STNAME.dart';
+import 'PieChart_Page.dart';
+import 'classes_Required.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'dart:developer';
 import 'package:intl/intl.dart';
@@ -23,6 +24,11 @@ class _SMEIChartPageState extends State<SMEIChartPage>{
   List<chart_Values> SMEI_Raw_Values_list = List<chart_Values>();
   List<chart_Values> price_Value_list = List<chart_Values>();
 
+  Year _selectedYear;
+  List<Year> _years = Year.getYear();
+  List<DropdownMenuItem<Year>> _dropdownMenuItems;
+  List data;
+
   Station _selectedStation;
   _SMEIChartPageState(this._selectedStation);
 
@@ -33,11 +39,11 @@ class _SMEIChartPageState extends State<SMEIChartPage>{
     print(url);
     final res = await http.get(url, headers: {"Accept": "aplication/json"});
     final jsonData = json.decode(res.body);
-    List data = jsonData['result'] as List;
+    data = jsonData['result'] as List;
 
-    for (var h in data) {
-      double smei = double.parse(double.parse(h["SMEI"]).toStringAsFixed(4));
-      int date = int.parse(h["Date"]);
+    for(var i = 0;i<10;i++){
+      int date = int.parse(data[i]["Date"]);
+      double smei = double.parse(double.parse(data[i]["SMEI"]).toStringAsFixed(4));
       chart_Values x = new chart_Values(new DateTime(int.parse(date.toString().substring(0,4)),int.parse(date.toString().substring(4,6))), smei);
       SMEI_Raw_Values_list.add(x);
     }
@@ -87,11 +93,31 @@ class _SMEIChartPageState extends State<SMEIChartPage>{
     return _seriesLineData;
   }
 
+  List<DropdownMenuItem<Year>> buildDropdownMenuItems(List years) {
+    List<DropdownMenuItem<Year>> items = List();
+    for (Year year in years) {
+      items.add(DropdownMenuItem(value: year,
+          child: Text(year.yearnum)));
+    }
+    return items;
+  }
+
+  onChangeDropDownItem(Year selectedYear) {
+    setState(() {
+      _selectedYear = selectedYear;
+      print(_selectedYear.yearnum);
+    });
+  }
+
   @override
   void initState() {
     _generateData();
     _seriesLineData = List<charts.Series<chart_Values, DateTime>>();
     _seriesLineData_1 = List<charts.Series<chart_Values, DateTime>>();
+
+    _dropdownMenuItems = buildDropdownMenuItems(_years);
+    _selectedYear = _dropdownMenuItems[0].value;
+
     super.initState();
   }
 
@@ -127,6 +153,7 @@ class _SMEIChartPageState extends State<SMEIChartPage>{
                                                 includeArea: true, stacked: true),
                                             animate: true,
                                             animationDuration: Duration(seconds: 1),
+
                                             domainAxis: new charts.EndPointsTimeAxisSpec(),
                                             behaviors: [new charts.SeriesLegend(),
                                               new charts.ChartTitle('TimeLine',
@@ -135,9 +162,45 @@ class _SMEIChartPageState extends State<SMEIChartPage>{
                                               new charts.ChartTitle('SMEI',
                                                   behaviorPosition: charts.BehaviorPosition.start,
                                                   titleOutsideJustification: charts.OutsideJustification.middleDrawArea),
-                                            ]
+                                            ],
                                         ),
                                       ),
+                                      Expanded(
+                                        child: Column(
+                                          children: <Widget>[
+                                            DropdownButton(
+                                              value: _selectedYear,
+                                              items: _dropdownMenuItems,
+                                              onChanged: onChangeDropDownItem,
+                                            ),
+                                            SizedBox(
+                                              width: 147,
+                                              child: RaisedButton(
+                                                onPressed: () {_onCLickShowPieChart();},
+                                                textColor: Colors.white,
+                                                padding: const EdgeInsets.all(0.0),
+                                                child: Container(
+                                                  width: 147,
+                                                  decoration: const BoxDecoration(
+                                                    gradient: LinearGradient(
+                                                      colors: <Color>[
+                                                        Color(0xFF4E342E),
+                                                        Color(0xFF6D4C41),
+                                                        Color(0xFF8D6E63),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  padding: const EdgeInsets.all(10.0),
+                                                  child: Text("Pie Chart",
+                                                      textAlign: TextAlign.center,
+                                                      style: TextStyle(fontSize: 20)
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ),
@@ -187,6 +250,16 @@ class _SMEIChartPageState extends State<SMEIChartPage>{
 
     );
   }
+
+  void _onCLickShowPieChart() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => PieChartPage(_selectedYear.yearnum, _selectedStation, data),
+        ));
+    print(_selectedYear.yearnum);
+  }
+
 }
 
 class chart_Values{

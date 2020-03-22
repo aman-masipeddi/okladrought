@@ -17,3 +17,19 @@ class Station{
     ];
   }
 }
+
+class Year{
+
+  String yearnum;
+
+  Year(this.yearnum);
+
+
+  static List<Year> getYear() {
+    return <Year>[
+      Year("2019"),
+      Year("2018"),
+      Year("2017"),
+    ];
+  }
+}

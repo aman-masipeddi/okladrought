@@ -1,10 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-
+import 'package:okladrought_1/classes_Required.dart';
+import 'PieChart_Page.dart';
 
 class cropyieldpage extends StatefulWidget {
 
@@ -23,24 +23,26 @@ class cropyieldpage extends StatefulWidget {
 
          ),
            body: Center(
-               child: Column(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: <Widget>[
-                   Text("Yet To Be Developed", textAlign: TextAlign.center,
-                     style: TextStyle(fontSize: 20),)
-                 ],
-               ),
+               child: Text("Yet To Be Developed", textAlign: TextAlign.center,
+                 style: TextStyle(fontSize: 20),)
            )
      );
    }
-}
 
-class crop_Yield{
-   String date;
-   double price;
+   /*void _onCLickShowSMEI() {
+     Navigator.push(
+         context,
+         MaterialPageRoute(
+           builder: (context) => PieChartPage(_selectedYear.yearnum),
+         ));
+     print(_selectedYear.yearnum);
+   }*/
 
-  crop_Yield(this.date, this.price);
-}
+ }
+
+
+
+
 
 
 
