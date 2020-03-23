@@ -1,6 +1,6 @@
 # okladrought
 
-Calculating the SMEI from the data given by the most robost network of environment monitoring stations "Mesonet Oklahoma", this mobile application displays the statsitical analysis of the drought and other factors which affects the agriculture in OKlahoma. 
+With the primary task of calculating SMEI from the data given by the most robost network of environment monitoring stations "Mesonet Oklahoma", this mobile application displays the statsitical analysis of the drought and other factors which affects the agriculture in OKlahoma. 
 
 ## Development Platform
 
