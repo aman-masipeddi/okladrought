@@ -1,16 +1,9 @@
-# okladrought_1
+# okladrought
 
-A new Flutter application.
+Calculating the SMEI from the data given by the most robost network of environment monitoring stations "Mesonet Oklahoma", this mobile application displays the statsitical analysis of the drought and other factors which affects the agriculture in OKlahoma. 
 
-## Getting Started
+## Development Platform
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* This project is developed in flutter plug in.
+* The flutter gives the flexibility that when a project is developed, flutter compiles the code and gives the executable code   for both IOS and Android.
+* The fllutter plugin can be used with wide range of IDEs.
